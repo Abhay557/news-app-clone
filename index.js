@@ -11,8 +11,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API Configurations
-const NEWS_API_KEY = process.env.NEWS_API_KEY;
-const NEWS_API_URL = `https://random-api-xyz.onrender.com/api/news/news?topic=`;
+const NEWS_API_URL = `https://random-api-xyz.onrender.com/api/news/`;
+console.log(NEWS_API_URL);
 
 // Routes
 app.get('/', async (req, res) => {
