@@ -9,13 +9,15 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
-5
+
+// API Configurations
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
 const NEWS_API_URL = `https://random-api-xyz.onrender.com/api/news/news?topic=`;
 
 // Routes
 app.get('/', async (req, res) => {
   try {
-    const topic = req.query.topic ;
+    const topic = req.query.topic || 'sports'; // Default country
     const response = await axios.get( {
       params: {
         topic: topic,
