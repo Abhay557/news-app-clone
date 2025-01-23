@@ -11,10 +11,10 @@
       
       <h2>Top Headlines</h2>
       <ul>
-        <% articles.forEach(article => { %>
+        <% articles.source.forEach(article => { %>
           <li>
-            <h3><a href="<%= article.url %>" target="_blank"><%= article.title %></a></h3>
-            <p><%= article.description || 'No description available' %></p>
+            <h3><a href="<%= article.source.url %>" target="_blank"><%= article.source.title %></a></h3>
+            <p><%= article.source.description || 'No description available' %></p>
           </li>
         <% }); %>
       </ul>
