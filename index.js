@@ -12,7 +12,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // API Configurations
 const NEWS_API_URL = `https://random-api-xyz.onrender.com/api/news/news?topic=`;
-console.log(NEWS_API_URL);
 
 // Routes
 app.get('/', async (req, res) => {
@@ -24,9 +23,10 @@ app.get('/', async (req, res) => {
       },
     });
 
-    res.render('index', { articles: response.data.articles, country });
+    res.render('index', { articles: response.data.articles, topic });
   } catch (error) {
     res.status(500).send('Error fetching news');
+    console.log(NEWS_API_URL);
   }
 });
 
