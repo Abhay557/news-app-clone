@@ -10,23 +10,19 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API Configurations
+const axios = require('axios'); // Ensure axios is imported
 const NEWS_API_URL = `https://random-api-xyz.onrender.com/api/news/news?topic=`;
 
 // Routes
 app.get('/', async (req, res) => {
   try {
-    const topic = req.query.topic || 'sports'; // Default country
-    const response = await axios.get( {
-      params: {
-        topic: topic,
-      },
-    });
+    const topic = req.query.topic || 'sports'; // Default topic
+    const response = await axios.get(`${NEWS_API_URL}${topic}`);
 
-    res.render('index', { articles: response.data.articles, topic });
+    res.render('index', { articles: response.data, topic });
   } catch (error) {
+    console.error('Error fetching news:', error.message); // Log the error message
     res.status(500).send('Error fetching news');
-    console.log(NEWS_API_URL);
   }
 });
 
