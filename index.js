@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const axios = require('axios');
 const path = require('path');
 
 const app = express();
@@ -9,7 +10,6 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-const axios = require('axios'); // Ensure axios is imported
 const NEWS_API_URL = `https://random-api-xyz.onrender.com/api/news/news?topic=`;
 
 // Routes
